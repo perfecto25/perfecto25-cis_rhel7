@@ -1,16 +1,18 @@
 class cis_rhel7::rule::rule_1_1_17 {
 
-warning('apache::proxy is deprecated; please use apache::mod::proxy')
-
 #includes Rules:
-# 1.1.17
+# 1.1.17 - Set Sticky Bit on All World-Writable Directories (Scored)
 
 file { '/tmp/stickybit.sh':
-  ensure => present,
+  ensure => file,
   source => "puppet:///modules/cis_rhel7/stickybit.sh",
   mode   => '0755',
   noop   => false,
 }
+
+$stickybit = $::sticky_bit
+
+notify { "(1.1.17) sticky bit not set on: ${stickybit}": }
 
 #  exec { '(1.1.17) sticky bit not set on world writable dirs':
     # command => "df --local -P | awk {'if (NR!=1) print \$6'} | xargs -I '{}' find '{}' -xdev -type d \\( -perm -0002 -a ! -perm -1000 \\) 2>/dev/null | xargs chmod a+t",
@@ -20,12 +22,9 @@ file { '/tmp/stickybit.sh':
     # onlyif => "test -z $(df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -type d \( -perm -0002 -a ! -perm -1000 \) 2>/dev/null )",
     # }
 
-$stickybit = $::sticky_bit
 
 #if $stickybit = 'fail' {
 #  warning('fail')
 #}
 
-
-
-}
+} #EOF

@@ -4,7 +4,5 @@ BIT=`df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev
 
 if [[ $BIT ]] 
 then
-	printf "sticky bit not set on\n${BIT}"
-else
-	echo "sticky bit set on world writeable directories"
+	echo "${BIT}"
 fi

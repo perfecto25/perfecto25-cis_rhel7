@@ -21,5 +21,5 @@ class cis_rhel7 {
   include ::cis_rhel7::rule::rule_1_1_7
   include ::cis_rhel7::rule::rule_1_1_14
   include ::cis_rhel7::rule::rule_1_1_17
-
+  include ::cis_rhel7::rule::rule_1_1_18
 } 

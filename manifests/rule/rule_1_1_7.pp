@@ -22,5 +22,4 @@ class cis_rhel7::rule::rule_1_1_7 {
   }
 
 
-
-}
+} #EOF
