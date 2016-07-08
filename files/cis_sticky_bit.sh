@@ -12,10 +12,11 @@ then
 	do
 		ARR="${ARR}'${i}',"
 	done
+
+	# remove last comma
+	ARR=`echo ${ARR::-1}]`
+
+	# echo facter
+	echo $ARR
 fi
 
-# remove last comma
-ARR=`echo ${ARR::-1}]`
-
-# echo facter value
-echo $ARR
