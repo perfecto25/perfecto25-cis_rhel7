@@ -3,7 +3,7 @@
 
 require 'facter'
 
-Facter.add(:sticky_bit) do
+Facter.add(:world_writable_dirs) do
 	confine :kernel => 'Linux'
 	setcode do
 		Facter::Core::Execution.exec('/tmp/cis_sticky_bit.sh')
