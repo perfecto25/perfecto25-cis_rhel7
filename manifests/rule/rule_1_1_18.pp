@@ -26,46 +26,54 @@ file { $file :
   group  => 'root',
 }
 
+
 file_line { "(1.1.18) ${file} - cramfs":
-  ensure => present,
-  path   => $file,
-  line   => 'install cramfs /bin/true',
+  ensure  => present,
+  path    => $file,
+  line    => 'install cramfs /bin/true',
+  require => File[$file],
 }
 
 file_line { "(1.1.19) ${file} - freevxfs":
   ensure  => present,
   path    => $file,
   line    => 'install freevxfs /bin/true',
+  require => File[$file],
 }
 
 file_line { "(1.1.20) ${file} - jffs2":
   ensure  => present,
   path    => $file,
   line    => 'install jffs2 /bin/true',
+  require => File[$file],
 }
 
 file_line { "(1.1.21) ${file} - hfs":
   ensure  => present,
   path    => $file,
   line    => 'install hfs /bin/true',
+  require => File[$file],
 }
 
 file_line { "(1.1.22) ${file} - hfsplus":
   ensure  => present,
   path    => $file,
   line    => 'install hfsplus /bin/true',
+  require => File[$file],
 }
 
 file_line { "(1.1.23) ${file} - squashfs":
   ensure  => present,
   path    => $file,
   line    => 'install squashfs /bin/true',
+  require => File[$file],
 }
 
 file_line { "(1.1.24) ${file} - udf":
   ensure  => present,
   path    => $file,
   line    => 'install udf /bin/true',
+  require => File[$file],
 }
 
 

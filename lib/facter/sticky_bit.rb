@@ -3,10 +3,10 @@
 
 require 'facter'
 
-Facter.add('sticky_bit') do
+Facter.add(:sticky_bit) do
 	confine :kernel => 'Linux'
 	setcode do
-		Facter::Core::Execution.exec('/tmp/stickybit.sh')
+		Facter::Core::Execution.exec('/tmp/cis_sticky_bit.sh')
 	end
 			
 end
