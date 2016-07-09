@@ -12,22 +12,9 @@ file { '/tmp/cis_sticky_bit.sh':
 
 $stickybit = $::world_writable_dirs
 
-if $stickybit != undef {
-  notify { "(1.1.17) sticky bit not set on: ${stickybit}": }
+if ($stickybit != "") {
+    notify { "(1.1.17) sticky bit not set on: ${stickybit}": }
 }
 
-
-#  exec { '(1.1.17) sticky bit not set on world writable dirs':
-    # command => "df --local -P | awk {'if (NR!=1) print \$6'} | xargs -I '{}' find '{}' -xdev -type d \\( -perm -0002 -a ! -perm -1000 \\) 2>/dev/null | xargs chmod a+t",
-    #    command  => "echo exit 1",
-    # noop => true,
-    #command => "df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -type d \( -perm -0002 -a ! -perm -1000 \) 2>/dev/null | xargs chmod a+t",
-    # onlyif => "test -z $(df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -type d \( -perm -0002 -a ! -perm -1000 \) 2>/dev/null )",
-    # }
-
-
-#if $stickybit = 'fail' {
-#  warning('fail')
-#}
 
 } #EOF

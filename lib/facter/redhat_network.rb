@@ -1,5 +1,5 @@
 # perfecto25-cis_rhel7
-# RHN Configuration (CIS 1.2.1, 1.2.2)
+# RHN Configuration (CIS 1.2.1)
 
 require 'facter'
 
