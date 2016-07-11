@@ -1,9 +1,10 @@
 #!/bin/sh
-# CIS RHEL7 Benchmark
 # perfecto25-cis_rhel7
+# CIS RHEL7 Benchmark
+# Rule 1.2.5
 
 
-UPDATES=`yum check-update | grep *.el7.*`
+UPDATES=`yum check-update | grep *.el7*`
 
 
 if [[ $UPDATES ]] 
