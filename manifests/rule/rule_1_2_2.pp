@@ -1,4 +1,8 @@
-class cis_rhel7::rule::rule_1_2_2 {
+class cis_rhel7::rule::rule_1_2_2 (
+  
+  $scripts_dir = $::cis_rhel7::params::scripts_dir
+  
+) inherits ::cis_rhel7::params {
 
 # includes Rules:
 # 1.2.2 - Verify Red Hat GPG Key is Installed (Scored)
@@ -10,7 +14,7 @@ class cis_rhel7::rule::rule_1_2_2 {
 if $::operatingsystem == 'RedHat' 
 {  
 
-  file { '/tmp/cis_scripts/cis_redhat_gpg.sh':
+  file { "${scripts_dir}/cis_redhat_gpg.sh":
     ensure => file,
     source => "puppet:///modules/cis_rhel7/cis_redhat_gpg.sh",
     mode   => '0755',
@@ -19,7 +23,7 @@ if $::operatingsystem == 'RedHat'
   
   $gpgkey = $::redhat_gpg
   
-  if $gpgkey == "not registered with RHN" 
+  if $gpgkey == "RedHat GPG Key is not installed" 
   {
     notify { "(1.2.2) - RedHat GPG Key is not installed": }
   }

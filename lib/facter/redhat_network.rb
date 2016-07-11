@@ -6,7 +6,7 @@ require 'facter'
 Facter.add(:redhat_network) do
 	confine :operatingsystem => 'RedHat'
 	setcode do
-		Facter::Core::Execution.exec('/tmp/cis_redhat_network.sh')
+		Facter::Core::Execution.exec('/tmp/cis_scripts/cis_redhat_network.sh')
 	end
 			
 end

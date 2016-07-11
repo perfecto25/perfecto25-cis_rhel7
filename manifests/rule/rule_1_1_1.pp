@@ -1,4 +1,5 @@
 class cis_rhel7::rule::rule_1_1_1 {
+
 # includes Rules:
 # 1.1.1 - Create Separate Partition for /tmp (Scored)
 # 1.1.2 - Set nodev option for /tmp Partition (Scored)
