@@ -32,5 +32,6 @@ class cis_rhel7 (
   include ::cis_rhel7::rule::rule_1_2_2
   include ::cis_rhel7::rule::rule_1_2_3
   include ::cis_rhel7::rule::rule_1_2_4
+  include ::cis_rhel7::rule::rule_1_2_5
 
 } 
