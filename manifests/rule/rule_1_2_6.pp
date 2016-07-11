@@ -16,7 +16,7 @@ $pkg = $::pkg_integrity
 
 if $pkg != ""
 {
-  notify { "(1.2.6) - Packages did not pass integrity check": }
+  notify { "(1.2.6) - Installed packages did not pass integrity check": }
 }
 
 

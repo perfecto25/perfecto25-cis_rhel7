@@ -4,7 +4,7 @@
 # Rule 1.2.5
 
 
-UPDATES=`yum check-update | grep *.el7*`
+UPDATES=`yum check-update | grep el7`
 
 
 if [[ $UPDATES ]] 
