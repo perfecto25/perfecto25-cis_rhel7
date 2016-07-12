@@ -3,7 +3,7 @@ class cis_rhel7::rule::rule_1_2_6 (
 ) inherits ::cis_rhel7::params {
 
 # includes Rules:
-# 1.2.5 - Obtain Software Package Updates with yum (Not Scored)
+# 1.2.6 - Verify Package Integrity Using RPM (Not Scored)
 
 file { "${scripts_dir}/cis_pkg_integrity.sh":
   ensure  => file,
@@ -12,7 +12,7 @@ file { "${scripts_dir}/cis_pkg_integrity.sh":
   noop    => false,
 }
 
-$pkg = $::pkg_integrity
+$pkg = $::cis_pkg_integrity
 
 if $pkg != ""
 {

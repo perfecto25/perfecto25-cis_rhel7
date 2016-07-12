@@ -21,7 +21,7 @@ if $::operatingsystem == 'RedHat'
     noop   => false,
   }
   
-  $gpgkey = $::redhat_gpg
+  $gpgkey = $::cis_redhat_gpg
   
   if $gpgkey == "RedHat GPG Key is not installed" 
   {

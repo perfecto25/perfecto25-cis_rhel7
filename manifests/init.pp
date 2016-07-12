@@ -33,6 +33,10 @@ class cis_rhel7 (
   include ::cis_rhel7::rule::rule_1_2_3
   include ::cis_rhel7::rule::rule_1_2_4
   include ::cis_rhel7::rule::rule_1_2_5
-  include ::cis_rhel7::rule::rule_1_2_6
-
+  # include ::cis_rhel7::rule::rule_1_2_6 (large processing time)
+  include ::cis_rhel7::rule::rule_1_3_1
+  include ::cis_rhel7::rule::rule_1_3_2
+  include ::cis_rhel7::rule::rule_1_4_1
+  include ::cis_rhel7::rule::rule_1_4_4
+  include ::cis_rhel7::rule::rule_1_4_6
 } 

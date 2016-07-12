@@ -3,7 +3,7 @@
 
 require 'facter'
 
-Facter.add(:pkg_integrity) do
+Facter.add('cis_pkg_integrity') do
 	confine :operatingsystem => 'RedHat'
 	setcode do
 		key = Facter::Core::Execution.exec('/tmp/cis_scripts/cis_pkg_integrity.sh')

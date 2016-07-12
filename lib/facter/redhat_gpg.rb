@@ -3,7 +3,7 @@
 
 require 'facter'
 
-Facter.add(:redhat_gpg) do
+Facter.add('cis_redhat_gpg') do
 	confine :operatingsystem => 'RedHat'
 	setcode do
 		key = Facter::Core::Execution.exec('/tmp/cis_scripts/cis_redhat_gpg.sh')

@@ -21,7 +21,7 @@ if $::operatingsystem == 'RedHat'
     noop   => false,
   }
   
-  $redhat_network = $::redhat_network
+  $redhat_network = $::cis_redhat_network
   
   if $redhat_network == "not registered with RHN" 
   {

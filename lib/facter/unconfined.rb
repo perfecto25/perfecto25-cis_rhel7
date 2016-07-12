@@ -3,10 +3,10 @@
 
 require 'facter'
 
-Facter.add('cis_yum_updates') do
+Facter.add('cis_unconfined_daemons') do
 	confine :osfamily => 'RedHat'
 	setcode do
-		key = Facter::Core::Execution.exec('/tmp/cis_scripts/cis_yumupdates.sh')
+		key = Facter::Core::Execution.exec('/tmp/cis_scripts/cis_unconfined_daemons.sh')
 	end
 			
 end

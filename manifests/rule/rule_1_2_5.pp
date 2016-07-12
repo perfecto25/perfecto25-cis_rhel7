@@ -12,7 +12,7 @@ file { "${scripts_dir}/cis_yumupdates.sh":
   noop    => false,
 }
 
-$yumupdates = $::yumupdates
+$updates = $::cis_yum_updates
 
 if $updates == "yum updates are available"
 {
