@@ -14,7 +14,7 @@ file { "${scripts_dir}/cis_unconfined_daemons.sh":
 
 $ud = $::cis_unconfined_daemons
 
-if $ud
+if $ud != ""
 {
   notify { "(1.4.6) - Unconfined daemons present: ${ud}": }
 }
