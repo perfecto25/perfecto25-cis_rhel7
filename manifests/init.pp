@@ -11,7 +11,6 @@ class cis_rhel7 (
   
   ### include required Classes
   include ::stdlib
-  include ::auditd
 
   ### location for shell scripts
   file { $scripts_dir :
@@ -62,5 +61,7 @@ class cis_rhel7 (
   include ::cis_rhel7::rule::rule_4_7
   include ::cis_rhel7::rule::rule_5_1_1
   include ::cis_rhel7::rule::rule_5_2_1_1
-  include ::cis_rhel7::rule::rule_5_2_3
+  include ::cis_rhel7::rule::rule_5_2_4
+  #include ::cis_rhel7::rule::rule_5_2_3
+
 } 
