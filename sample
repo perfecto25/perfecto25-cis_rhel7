@@ -1446,33 +1446,195 @@ file_line { "(5.2.3) - ${file}: audit=1":
 
 
 } #EOF
-class cis_rhel7::rule::rule_5_2_4 {
+class cis_rhel7::rule::rule_5_2_4 (
+
+  $rules = $::cis_rhel7::params::audit_rules
+
+) inherits cis_rhel7::params {
 
 # includes Rules:
-# 5.2.1.1 - Configure Audit Log Storage Size (Not Scored)
-# 5.2.1.2 - Disable System on Audit Log Full (Not Scored)
-# 5.2.1.3 - Keep All Auditing Information (Scored)
-# 5.2.2 - Enable auditd Service (Scored)
-
+# 5.2.4 - Record Events That Modify Date and Time Information (Scored)
+# 5.2.5 - Record Events That Modify User/Group Information (Scored)
+# 5.2.6 - Record Events That Modify the System's Network Environment (Scored)
+# 5.2.7 - Record Events That Modify the System's Mandatory Access Controls (Scored)
+# 5.2.8 - Collect Login and Logout Events (Scored)
+# 5.2.9 - Collect Session Initiation Information (Scored)
+# 5.2.10 - Collect Discretionary Access Control Permission Modification Events (Scored)
+# 5.2.11 - Collect Unsuccessful Unauthorized Access Attempts to Files (Scored)
+# 5.2.13 - Collect Successful File System Mounts (Scored)
+# 5.2.14 - Collect File Deletion Events by User (Scored)
+# 5.2.15 - Collect Changes to System Administration Scope (sudoers) (Scored)
+# 5.2.16 - Collect System Administrator Actions (sudolog) (Scored)
+# 5.2.17 - Collect Kernel Module Loading and Unloading (Scored)
+# 5.2.18 - Make the Audit Configuration Immutable (Scored)
 
 $file = '/etc/audit/audit.rules'
 
-$rules = [ '-a always,exit -S adjtimex -S settimeofday -S stime -k time-change',
-           '-a always,exit -S clock_settime -k time-change',
-           '-w /etc/localtime -p wa -k time-change',
-           '-w /etc/group -p wa -k identity',
-           '-w /etc/passwd -p wa -k identity',
-           '-w /etc/gshadow -p wa -k identity',
-           '-w /etc/shadow -p wa -k identity',
-           '-w /etc/security/opasswd -p wa -k identity',
+each ($rules) |$rule_item| {
+  
+  $rule = split($rule_item, '%')
+
+  file_line { "(${rule[1]}) - ${file}: ${rule[0]}":
+    ensure    => present,
+    path      => $file,
+    line      => $rule[0],
+    multiple  => false,
+  }
+}
+
+} #EOF
+class cis_rhel7::rule::rule_5_3 {
+
+# includes Rules:
+# 5.3 - Configure logrotate (Not Scored)
 
 
-each ($rules) |$rule| {
-  auditd::rule { "(5.2.4 - 5.2.5) - ${file}: ${rule}":
-    content => $rule,
+$file = '/etc/logrotate.d/syslog'
+
+file { "(5.3) - ${file} exists":
+  name    => $file,
+  ensure  => file,
+  mode    => '0644',
+  owner   => 'root',
+  group   => 'root',
+}
+
+$logs = [ '/var/log/messages','/var/log/secure','/var/log/maillog','/var/log/spooler','/var/log/boot.log','/var/log/cron' ]
+
+each ($logs) |$log| {
+ 
+  file_line { "(5.3) - ${file}: ${log}":
+    ensure    => present,
+    path      => $file,
+    line      => $log,
+    match	  => "^${rule}",
+    multiple  => false,
   }
 }
 
 
+} #EOF
+class cis_rhel7::rule::rule_6_1_1 {
+
+# includes Rules:
+# 6.1.1 - Enable anacron Daemon (Scored)
+# 6.1.2 - Enable crond Daemon (Scored)
+# 6.1.3 - Set User/Group Owner and Permission on /etc/anacrontab (Scored)
+# 6.1.4 - Set User/Group Owner and Permission on /etc/crontab (Scored)
+# 6.1.5 - Set User/Group Owner and Permission on /etc/cron.hourly (Scored)
+# 6.1.6 - Set User/Group Owner and Permission on /etc/cron.daily (Scored)
+# 6.1.7 - Set User/Group Owner and Permission on /etc/cron.weekly (Scored)
+# 6.1.8 - Set User/Group Owner and Permission on /etc/cron.monthly (Scored)
+# 6.1.9 - Set User/Group Owner and Permission on /etc/cron.d (Scored)
+# 6.1.10 - Restrict at Daemon (Scored)
+# 6.1.11 - Restrict at/cron to Authorized Users (Scored)
+
+package { "(6.1.1) - Anacron installed":
+    name    => "cronie-anacron",
+    ensure  => present,
+}
+
+service { "(6.1.2) - crond service is enabled":
+	name    => "crond",
+    ensure  => running,
+    enable  => true,
+  }
+
+
+$files = [ '/etc/anacrontab,6.1.3',
+		   '/etc/crontab,6.1.4',
+		   '/etc/cron.hourly,6.1.5',
+		   '/etc/cron.daily,6.1.6',
+		   '/etc/cron.weekly,6.1.7',
+		   '/etc/cron.monthly,6.1.8',
+		   '/etc/at.allow,6.1.10',
+		   '/etc/cron.allow,6.1.11'
+		 ]
+
+
+each($files) |$file_item| {
+
+	$file = split($file_item,',')
+
+	file { "(${file[1]}) - ${file[0]} permissions":
+		ensure	=> file,
+		path   	=>  $file[0],
+    	mode   	=> '0600',
+    	owner  	=> 'root',
+    	group  	=> 'root',
+	}
+}
+
+
+file { "(6.1.9) - /etc/cron.d permissions":
+	ensure	=> directory,
+	path   => '/etc/cron.d',
+    mode   => '0700',
+    owner  => 'root',
+    group  => 'root',
+}
+
+
+} #EOF
+class cis_rhel7::rule::rule_6_2_1 (
+
+	$settings = $::cis_rhel7::params::sshd_settings
+
+) inherits cis_rhel7::params {
+
+# includes Rules:
+# 6.2.1 - Set SSH Protocol to 2 (Scored)
+# 6.2.2 - Set LogLevel to INFO (Scored)
+# 6.2.3 - Set Permissions on /etc/ssh/sshd_config (Scored)
+# 6.2.4 - Disable SSH X11 Forwarding (Scored)
+# 6.2.5 - Set SSH MaxAuthTries to 4 or Less (Scored)
+# 6.2.6 - Set SSH IgnoreRhosts to Yes (Scored)
+# 6.2.7 - Set SSH HostbasedAuthentication to No (Scored)
+# 6.2.8 - Disable SSH Root Login (Scored)
+# 6.2.9 - Set SSH PermitEmptyPasswords to No (Scored)
+# 6.2.10 - Do Not Allow Users to Set Environment Options (Scored)
+# 6.2.11 - Use Only Approved Cipher in Counter Mode (Scored)
+# 6.2.12 - Set Idle Timeout Interval for User Login (Scored)
+# 6.2.13 - Limit Access via SSH (Scored)
+# 6.2.14 - Set SSH Banner (Scored)
+
+$file = '/etc/ssh/sshd_config'
+
+each ($settings) |$item| {
+
+  $setting = split($item,'%')
+ 
+  file_line { "(${setting[1]}) - ${file}: ${setting[0]}":
+    ensure    => present,
+    path      => $file,
+    line      => $setting[0],
+  }
+}
+
+file { "(6.2.3) - ${file} permissions":
+  name    => $file,
+  ensure  => file,
+  mode    => '0600',
+  owner   => 'root',
+  group   => 'root',
+}
+
+file_line { "(6.2.13) - ${file}: AllowUsers":
+  ensure  	=> present,
+  path    	=> $file,
+  line 		=> 'AllowUsers <user>',
+  match 	=> '^AllowUsers.?$',
+  multiple  => false,
+  replace   => true,
+}
+
+file_line { "(6.2.14) - ${file}: Banner":
+  ensure  	=> present,
+  path    	=> $file,
+  line 		=> 'Banner /etc/issue.net',
+  match 	=> '^Banner./etc/issue.?$',
+  multiple  => false,
+  replace   => true,
+}
 
 } #EOF
