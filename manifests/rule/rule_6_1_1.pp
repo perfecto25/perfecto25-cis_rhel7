@@ -28,10 +28,6 @@ service { "(6.1.2) - crond service is enabled":
     enable  => true,
   }
 
-
-
-
-
 each($files) |$item| {
 
 	$file = split($item,'%')

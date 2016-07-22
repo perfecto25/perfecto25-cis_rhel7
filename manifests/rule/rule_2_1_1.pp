@@ -1,9 +1,4 @@
-class cis_rhel7::rule::rule_2_1_1 (
-
-  $packages = $::cis_rhel7::params::packages,
-  $services = $::cis_rhel7::params::services
-
-) inherits cis_rhel7::params {
+class cis_rhel7::rule::rule_2_1_1 {
 
 # includes Rules:
 # 2.1.1 - Remove telnet-server (Scored)
@@ -26,37 +21,105 @@ class cis_rhel7::rule::rule_2_1_1 (
 # 2.1.18 - Disable tcpmux-server (Scored)
 
 
+package { "(2.1.1) - Telnet server removed":
+  name    => "telnet-server",
+  ensure  => absent,
+}
 
+package { "(2.1.2) - Telnet client removed":
+  name    => "telnet",
+  ensure  => absent,
+}
 
+package { "(2.1.3) - RSH server removed":
+  name    => "rsh-server",
+  ensure  => absent,
+}
 
+package { "(2.1.4) - RSH client removed":
+  name    => "rsh",
+  ensure  => absent,
+}
 
-
-# Remove Packages
-each($packages) |$item| {
-
-  $pkg = split($item,'%')
-  notify { "${pkg[2]} - ${pkg[1]}  pkg name0 ${pkg[0]}": }
-  package { "(${pkg[2]}) - ${pkg[1]}":
-    name    => $pkg[0],
-    ensure  => absent,
-  }
+package { "(2.1.5) - NIS client removed":
+  name    => "ypbind",
+  ensure  => absent,
 }
 
 
-# Disable Services
-each($services) |$svc_item| {
+package { "(2.1.6) - NIS server removed":
+  name    => "ypserv",
+  ensure  => absent,
+}
 
-  $svc = split($svc_item,'%')
-  
-  service { "(${svc[2]}) - ${svc[1]}":
-    name    => $svc[0],
-    ensure  => stopped,
-    enable  => false,
-  }
+package { "(2.1.7) - TFTP client removed":
+  name    => "tftp",
+  ensure  => absent,
+}
+
+package { "(2.1.8) - TFTP server removed":
+  name    => "tftp-server",
+  ensure  => absent,
+}
+
+package { "(2.1.9) - Talk client removed":
+  name    => "talk",
+  ensure  => absent,
 }
 
 
+package { "(2.1.10) - Talk server removed":
+  name    => "talk-server",
+  ensure  => absent,
+}
 
+
+package { "(2.1.11) - Xinetd removed":
+  name    => "xinetd",
+  ensure  => absent,
+}
+
+service { "(2.1.12) - Disable chargen-dgram":
+  name    => "chargen-dgram",
+  ensure  => stopped,
+  enable  => false,
+}
+
+service { "(2.1.13) - Disable chargen-stream":
+  name    => "chargen-stream",
+  ensure  => stopped,
+  enable  => false,
+}
+
+service { "(2.1.14) - Disable daytime-dgram":
+  name    => "daytime-dgram",
+  ensure  => stopped,
+  enable  => false,
+}
+
+service { "(2.1.15) - Disable daytime-stream":
+  name    => "daytime-stream",
+  ensure  => stopped,
+  enable  => false,
+}
+
+service { "(2.1.16) - Disable echo-dgram":
+  name    => "echo-dgram",
+  ensure  => stopped,
+  enable  => false,
+}
+
+service { "(2.1.17) - Disable echo-stream":
+  name    => "echo-stream",
+  ensure  => stopped,
+  enable  => false,
+}
+
+service { "(2.1.18) - Disable tcpmux-server":
+  name    => "tcpmux-server",
+  ensure  => stopped,
+  enable  => false,
+}
 
 
 

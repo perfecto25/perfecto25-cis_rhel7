@@ -2,26 +2,11 @@
 # Reference for this Module:
 # CIS_Red_Hat_Enterprise_Linux_7_Benchmark_v1.0.0.pdf
 
-class cis_rhel7 (
-
-  $scripts_dir = $::cis_rhel7::params::scripts_dir
-
-) inherits ::cis_rhel7::params {
-
+class cis_rhel7 inherits ::cis_rhel7::params {
   
-  ### include required Classes
-  include ::stdlib
-
-  ### location for shell scripts
-  file { $scripts_dir :
-    ensure  => directory,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    noop    => false,
-  }
-
-  ### Rules
+  ## Rules
+  
+  include ::cis_rhel7::rule::prereq
   include ::cis_rhel7::rule::rule_1_1_1
   include ::cis_rhel7::rule::rule_1_1_5
   include ::cis_rhel7::rule::rule_1_1_7
@@ -65,4 +50,9 @@ class cis_rhel7 (
   include ::cis_rhel7::rule::rule_5_3
   include ::cis_rhel7::rule::rule_6_1_1
   include ::cis_rhel7::rule::rule_6_2_1
-} 
+  include ::cis_rhel7::rule::rule_6_3_1
+  include ::cis_rhel7::rule::rule_6_3_2
+  include ::cis_rhel7::rule::rule_6_3_3
+
+
+} #EOF

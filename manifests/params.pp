@@ -10,6 +10,7 @@ Service   { noop => true }
 Package   { noop => true }
 Cron      { noop => true }
 Augeas    { noop => true }
+Pam       { noop => true }
 
 $scripts_dir = '/tmp/cis_scripts'
 
