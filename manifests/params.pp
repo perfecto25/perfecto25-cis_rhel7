@@ -111,6 +111,10 @@ $sshd_settings = [ 'Protocol 2 %6.2.1',
                    'ClientAliveCountMax 0 %6.2.12'
                  ]
 
+$banners = [ '/etc/motd','/etc/issue','/etc/issue.net' ]
+
+$banner_info = ['\m','\r','\s','\v']
+
 
 
 

@@ -59,6 +59,8 @@ class cis_rhel7 inherits ::cis_rhel7::params {
   include ::cis_rhel7::rule::rule_7_1_1
   include ::cis_rhel7::rule::rule_7_2
   include ::cis_rhel7::rule::rule_7_3
-
+  include ::cis_rhel7::rule::rule_7_4
+  include ::cis_rhel7::rule::rule_7_5
+  include ::cis_rhel7::rule::rule_8_1
 
 } #EOF
