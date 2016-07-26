@@ -1,8 +1,4 @@
-class cis_rhel7::rule::rule_1_2_4 (
-  
-  $scripts_dir = $::cis_rhel7::params::scripts_dir
-  
-) inherits ::cis_rhel7::params {
+class cis_rhel7::rule::rule_1_2_4 {
 
 # includes Rules:
 # 1.2.4 - Disable the rhnsd Daemon (Not Scored)

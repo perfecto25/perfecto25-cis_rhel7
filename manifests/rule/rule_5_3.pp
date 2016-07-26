@@ -1,4 +1,8 @@
-class cis_rhel7::rule::rule_5_3 {
+class cis_rhel7::rule::rule_5_3 (
+
+  $logs = $::cis_rhel7::params::logs
+
+) inherits cis_rhel7::params {
 
 # includes Rules:
 # 5.3 - Configure logrotate (Not Scored)
@@ -14,7 +18,7 @@ file { "(5.3) - ${file} exists":
   group   => 'root',
 }
 
-$logs = [ '/var/log/messages','/var/log/secure','/var/log/maillog','/var/log/spooler','/var/log/boot.log','/var/log/cron' ]
+
 
 each ($logs) |$log| {
  

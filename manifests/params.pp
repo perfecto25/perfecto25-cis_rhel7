@@ -12,8 +12,18 @@ Cron      { noop => true }
 Augeas    { noop => true }
 Pam       { noop => true }
 
-$scripts_dir = '/tmp/cis_scripts'
+$cis_scripts_dir = '/tmp/cis_scripts'
 
+$cis_scripts = [ 'cis_ww_files.sh',
+                 'cis_ww_dirs.sh',
+                 'cis_yumupdates.sh',
+                 'cis_unconfined_daemons.sh',
+                 'cis_redhat_network.sh',
+                 'cis_redhat_gpg.sh',
+                 'cis_pkg_integrity.sh',
+                 'cis_disable_sys_acct.sh',
+                 'cis_unowned_files.sh'
+               ]
 
 # Rule 2.1.1
 $packages = [   'telnet-server %Telnet server removed %2.1.1',
@@ -38,6 +48,20 @@ $services = [   'chargen-dgram %Disable chargen-dgram %2.1.12',
                 'tcpmux-server %Disable tcpmux-server %2.1.18'
 ]
 
+
+# Rule 3.8
+$nfs_services = ['nfslock','rpcgssd','rpcbind','rpcidmapd','rpcsvcgssd']
+
+# Rule 3.9
+$servers = ['3.9,bind','3.10,vsftpd','3.11,httpd','3.12,dovecot','3.13,samba','3.14,squid','3.15,net-snmp']
+
+# Rule 5.1
+$contents = [ 'auth,user.* /var/log/messages',
+              'kern.* /var/log/kern.log',
+              'daemon.* /var/log/daemon.log',
+              'syslog.* /var/log/syslog',
+              'lpr,news,uucp,local0,local1,local2,local3,local4,local5,local6.* /var/log/unused.log'
+            ]
 
 
 # Rule 5.2.4
@@ -85,6 +109,9 @@ $audit_rules = [ '-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time
                  '-e 2 %5.2.18'
                 ]
 
+# Rule 5.3
+$logs = [ '/var/log/messages','/var/log/secure','/var/log/maillog','/var/log/spooler','/var/log/boot.log','/var/log/cron' ]
+
 # Rule 6.1.1
 $cron_files = [ '/etc/anacrontab %6.1.3',
                 '/etc/crontab %6.1.4',
@@ -113,7 +140,6 @@ $sshd_settings = [ 'Protocol 2 %6.2.1',
 
 $banners = [ '/etc/motd','/etc/issue','/etc/issue.net' ]
 
-$banner_info = ['\m','\r','\s','\v']
 
 
 

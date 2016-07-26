@@ -1,4 +1,8 @@
-class cis_rhel7::rule::rule_5_1_1 {
+class cis_rhel7::rule::rule_5_1_1 (
+
+  $contents = $::cis_rhel7::params::contents
+
+) inherits cis_rhel7::params {
 
 # includes Rules:
 # 5.1.1 - Install the rsyslog package (Scored)
@@ -29,14 +33,6 @@ file { "(5.1.3) - ${file} exists":
   group   => 'root',
   require => Package['(5.1.1) - Rsyslog installed'],
 }
-
-
-$contents = [ 'auth,user.* /var/log/messages',
-              'kern.* /var/log/kern.log',
-              'daemon.* /var/log/daemon.log',
-              'syslog.* /var/log/syslog',
-              'lpr,news,uucp,local0,local1,local2,local3,local4,local5,local6.* /var/log/unused.log'
-            ]
 
 each($contents) |$item| {
   

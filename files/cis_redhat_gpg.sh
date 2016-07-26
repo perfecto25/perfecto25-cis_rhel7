@@ -3,6 +3,7 @@
 # CIS RHEL7 Benchmark
 # Rule 1.2.2
 
+## REDHAT ONLY
 
 GPGKEY=`rpm -q --queryformat "%{SUMMARY}\n" gpg-pubkey | grep "(release key) <security@redhat.com>"`
 

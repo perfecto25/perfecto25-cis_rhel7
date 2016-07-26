@@ -4,7 +4,6 @@ class cis_rhel7::rule::rule_6_3_2 {
 # 6.3.2 - Set Password Creation Requirement Parameters Using pam_cracklib (Scored)
 
 
-
 file { "(6.3.2) - /etc/pam.d/system-auth is a symlink":
 	ensure 	=> link,
 	path	=> '/etc/pam.d/system-auth',

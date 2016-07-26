@@ -1,4 +1,8 @@
-class cis_rhel7::rule::rule_3_9 {
+class cis_rhel7::rule::rule_3_9 (
+
+  $servers = $::cis_rhel7::params::servers
+
+) inherits cis_rhel7::params {
 
 # includes Rules:
 # 3.9 - Remove DNS Server (Not Scored)
@@ -9,9 +13,9 @@ class cis_rhel7::rule::rule_3_9 {
 # 3.14 - 3.14 Remove HTTP Proxy Server (Not Scored)
 # 3.15 - 3.15 Remove SNMP Server (Not Scored)
 
-$packages = ['3.9,bind','3.10,vsftpd','3.11,httpd','3.12,dovecot','3.13,samba','3.14,squid','3.15,net-snmp']
 
-each($packages) |$package| {
+
+each($servers) |$package| {
 
   $pkg = split($package,',')
   package { "(${pkg[0]}) - Remove ${pkg[1]}":

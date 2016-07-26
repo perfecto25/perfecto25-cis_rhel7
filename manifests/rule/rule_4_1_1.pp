@@ -7,8 +7,6 @@ class cis_rhel7::rule::rule_4_1_1 {
 
 $file = '/etc/sysctl.conf'
 
-
-
 file_line { "(4.1.1) - ${file}: ip_forward=0":
   ensure  => present,
   path  => $file,
@@ -30,8 +28,6 @@ file_line { "(4.1.2) - ${file}: default.send_redirects=0":
   line    => 'net.ipv4.conf.default.send_redirects=0',
   match   => '^net.ipv4.conf.default.send_redirects',
 }
-
-
 
 
 } #EOF
