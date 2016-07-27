@@ -22,8 +22,19 @@ $cis_scripts = [ 'cis_ww_files.sh',
                  'cis_redhat_gpg.sh',
                  'cis_pkg_integrity.sh',
                  'cis_disable_sys_acct.sh',
-                 'cis_unowned_files.sh'
+                 'cis_unowned_files.sh',
+                 'cis_ungrouped_files.sh',
+                 'cis_suid_exec.sh',
+                 'cis_sgid_exec.sh',
+                 'cis_password_fields.sh',
+                 'cis_legacy_entry.sh',
+                 'cis_uid_0.sh',
+                 'cis_dup_uid.sh',
+                 'cis_dup_gid.sh',
+                 'cis_res_uid.sh',
+                 'cis_dup_name.sh'
                ]
+
 
 # Rule 2.1.1
 $packages = [   'telnet-server %Telnet server removed %2.1.1',

@@ -7,7 +7,7 @@ $files = $::cis_benchmarks['unowned_files']
   
 if $files != "" 
 {
-    notify { "(9.1.11) - Unowned files exist: ${files}": }
+    notify { "(9.1.11) - Unowned files and directories exist: ${files}": }
 }
 
 
