@@ -30,14 +30,14 @@ If you'd like this module to enforce the actual rules on your nodes, open up the
 
 This module requires 2 additional modules
 1. puppetlabs-stdlib
-1. herculesteam-augeasproviders_pam
+2. herculesteam-augeasproviders_pam
 
 
 ## Usage
 
 To use this module, clone it from git into your basemodule path and assign your nodes to the 'cis_rhel7' class. The next time your agents run, they will run a full CIS compliance check and report inconsitencies. 
 
-*Make sure to run this module at least 2 times on each node, as the first run will generate the facts, the 2nd run will give the fact output.*
+*Make sure to run this module at least 2 times on each node, as the first run will generate the facts, the 2nd run will give the fact output.*cd 
 
 Each rule within the benchmark reports the specific rule number that can be referenced in the CIS document. 
 
@@ -50,9 +50,9 @@ To see these custom facts, run "facter -p"
 
 ## Limitations
 
-This module was tested using Puppet 4.3 (PE 2016.2) as the Master (running on Ubuntu 14.04), tested on 
+This module was tested using Puppet 4.5 (PE 2016.2) as the Master (running on Ubuntu 14.04), tested on 
 1. RedHat 7 x64
-1. CentOS 7 x64
+2. CentOS 7 x64
 
 ## Development
 
