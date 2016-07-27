@@ -32,7 +32,12 @@ $cis_scripts = [ 'cis_ww_files.sh',
                  'cis_dup_uid.sh',
                  'cis_dup_gid.sh',
                  'cis_res_uid.sh',
-                 'cis_dup_name.sh'
+                 'cis_dup_name.sh',
+                 'cis_dup_group.sh',
+                 'cis_netrc.sh',
+                 'cis_userhome.sh',
+                 'cis_validhome.sh',
+                 'cis_checkgroup.sh'
                ]
 
 

@@ -32,4 +32,8 @@ cat /etc/passwd | awk -F: '($3 < 500) { print $1" "$3 }' |\
 done
 
 ARR=`echo ${ARR::-1}]`
-echo $ARR)
+
+if [ $ARR != "]" ]
+then
+        echo $ARR
+fi)

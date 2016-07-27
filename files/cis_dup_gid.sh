@@ -26,8 +26,11 @@ if [ $1 -gt 1 ]; then
 		ARR=`echo ${ARR::-1}]`
 
 		# echo facter
+		if [ $ARR != "]" ]
+		then
+        	echo $ARR
+		fi
 
-		echo $ARR
 	fi
 fi
 done

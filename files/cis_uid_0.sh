@@ -18,6 +18,10 @@ then
 	ARR=`echo ${ARR::-1}]`
 
 	# echo facter
-	echo $ARR
+	if [ $ARR != "]" ]
+	then
+        echo $ARR
+	fi
+
 fi
 

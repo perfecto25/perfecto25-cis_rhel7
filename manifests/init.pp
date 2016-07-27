@@ -77,15 +77,15 @@ class cis_rhel7 inherits ::cis_rhel7::params {
   # include ::cis_rhel7::rule::rule_9_2_8 (manual check)
   # include ::cis_rhel7::rule::rule_9_2_9 (manual check)
   # include ::cis_rhel7::rule::rule_9_2_10 (manual check)
-  # include ::cis_rhel7::rule::rule_9_2_11 (manual check)
-  # include ::cis_rhel7::rule::rule_9_2_12 (manual check)
-  # include ::cis_rhel7::rule::rule_9_2_13 (manual check)
+  include ::cis_rhel7::rule::rule_9_2_11
+  include ::cis_rhel7::rule::rule_9_2_12
+  include ::cis_rhel7::rule::rule_9_2_13
   include ::cis_rhel7::rule::rule_9_2_14
   include ::cis_rhel7::rule::rule_9_2_15
   include ::cis_rhel7::rule::rule_9_2_16
   include ::cis_rhel7::rule::rule_9_2_17
-  # include ::cis_rhel7::rule::rule_9_2_18 (manual check)
-  # include ::cis_rhel7::rule::rule_9_2_19 (manual check)
-  # include ::cis_rhel7::rule::rule_9_2_20 (manual check)
+  include ::cis_rhel7::rule::rule_9_2_18
+  include ::cis_rhel7::rule::rule_9_2_19
+  include ::cis_rhel7::rule::rule_9_2_20
 
 } #EOF
