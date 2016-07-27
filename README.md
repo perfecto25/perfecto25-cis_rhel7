@@ -30,6 +30,7 @@ If you'd like this module to enforce the actual rules on your nodes, open up the
 
 This module requires 2 additional modules
 1. puppetlabs-stdlib
+
 2. herculesteam-augeasproviders_pam
 
 
@@ -37,7 +38,7 @@ This module requires 2 additional modules
 
 To use this module, clone it from git into your basemodule path and assign your nodes to the 'cis_rhel7' class. The next time your agents run, they will run a full CIS compliance check and report inconsitencies. 
 
-*Make sure to run this module at least 2 times on each node, as the first run will generate the facts, the 2nd run will give the fact output.*cd 
+*Make sure to run this module at least 2 times on each node, as the first run will generate the facts, the 2nd run will give the fact output.*
 
 Each rule within the benchmark reports the specific rule number that can be referenced in the CIS document. 
 
@@ -47,7 +48,7 @@ To include or exclude specific rules, open the $module/manifests/init.pp and com
 
 The shell scripts are copied to the node into /tmp/cis_scripts directory. The manifest that does this is $module/manifests/rule/prereq.pp
 
-These scripts generate output that gets captured by Puppet custom facts. The custom fact is located in $module/lib/facter directory, its a single fact that generates a number of custom facts with a "cis_" prefix. T
+These scripts generate output that gets captured by Puppet custom facts. The custom fact is located in $module/lib/facter directory, its a single fact that generates a number of custom facts with a "cis_" prefix.
 
 To see these custom facts, run "facter -p"
 
@@ -55,7 +56,9 @@ To see these custom facts, run "facter -p"
 ## Limitations
 
 This module was tested using Puppet 4.5 (PE 2016.2) as the Master (running on Ubuntu 14.04), tested on 
+
 1. RedHat 7 x64
+
 2. CentOS 7 x64
 
 ## Development

@@ -1,38 +1,26 @@
-{
-  "name": "perfecto25-cis_rhel7",
-  "version": "1.0.0",
-  "author": "perfecto25",
-  "summary": "CIS Benchmark Compliance for RHEL 7",
-  "license": "Apache-2.0",
-  "source": "https://github.com/perfecto25/perfecto25-cis_rhel7",
-  "project_page": "https://github.com/perfecto25/perfecto25-cis_rhel7",
-  "issues_url": "https://github.com/perfecto25/perfecto25-cis_rhel7/issues",
-  "dependencies": [
-  
-  ],
-  "data_provider": null,
-  "operatingsystem_support": [
-    {
-      "operatingsystem": "RedHat",
-      "operatingsystemrelease": [
-        "7"
-      ]
-    },
-    {
-      "operatingsystem": "CentOS",
-      "operatingsystemrelease": [
-        "7"
-      ]
+ {
+      "name": "perfecto25-cis_rhel7",
+      "version": "1.0.0",
+      "author": "perfecto25",
+      "license": "Apache-2.0",
+      "summary": "CIS Benchmark Compliance for RHEL 7",
+      "source": "git@github.com:perfecto25/perfecto25-cis_rhel7.git",
+      "project_page": "https://github.com/perfecto25/perfecto25-cis_rhel7",
+      "issues_url": "https://github.com/perfecto25/perfecto25-cis_rhel7/issues",
+      "tags": ["rhel7", "cis", "Benchmark", "centos", "compliance", "puppet"],
+      "operatingsystem_support": [
+        {
+        "operatingsystem":"RedHat",
+        "operatingsystemrelease":[ "7.0" ]
+        },
+        {
+        "operatingsystem": "CentOS",
+        "operatingsystemrelease": [ "7.0" ]
+        }
+       ],
+      "dependencies": [
+        { "name": "puppetlabs/stdlib", "version_requirement": ">= 2.2.0 < 5.0.0" },
+        { "name": "herculesteam-augeasproviders_pam", "version_requirement": ">= 2.1.0 < 5.0.0" }
+      ],
+      "data_provider": "hiera"
     }
-  "requirements": [
-    {
-      "name": "pe",
-      "version_requirement": ">= 4.0.0"
-    },
-    {
-      "name": "puppet",
-      "version_requirement": ">=4.0"
-    }
-  ],
-  "description": "CIS Benchmarks for RHEL 7"
-}
