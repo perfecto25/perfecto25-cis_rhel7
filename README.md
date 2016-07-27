@@ -24,7 +24,7 @@ https://benchmarks.cisecurity.org/tools2/linux/CIS_Red_Hat_Enterprise_Linux_7_Be
 
 This module does not change anything on your test systems, it is merely an auditing and reporting tool that reports back with any found vulnerabilities. The way this module controls various server components (files, directories, services, packages, etc) is with a Puppet "noop" parameter, Puppet will try to enforce a declared state with a no-op flag, and will return any inconsitencies.
 
-If you'd like this module to enforce the actual rules on your nodes, open up the /manifests/params.pp file and edit the Resource Defaults, set the NOOP parameter to "false"
+If you'd like this module to enforce the actual rules on your nodes, open up the $module/manifests/params.pp file and edit the Resource Defaults, set the NOOP parameter to "false"
 
 ### Setup Requirements
 
@@ -41,9 +41,13 @@ To use this module, clone it from git into your basemodule path and assign your 
 
 Each rule within the benchmark reports the specific rule number that can be referenced in the CIS document. 
 
-To include or exclude specific rules, open the /manifests/init.pp and comment out any rule #s that you do not want to test for. 
+To include or exclude specific rules, open the $module/manifests/init.pp and comment out any rule #s that you do not want to test for. 
 
-*Note* - not all rules can be handled directly by Puppet. For those that cannot be handled by Puppet's Resources, there are a number of shell scripts under $module/files directory. These scripts generate output that gets captured by Puppet custom facts. The custom fact is located in $module/lib/facter directory, its a single fact that generates a number of custom facts with a "cis_" prefix. 
+*Note* - not all rules can be handled directly by Puppet. For those that cannot be handled by Puppet's Resources, there are a number of shell scripts under $module/files directory. 
+
+The shell scripts are copied to the node into /tmp/cis_scripts directory. The manifest that does this is $module/manifests/rule/prereq.pp
+
+These scripts generate output that gets captured by Puppet custom facts. The custom fact is located in $module/lib/facter directory, its a single fact that generates a number of custom facts with a "cis_" prefix. T
 
 To see these custom facts, run "facter -p"
 
