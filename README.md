@@ -29,6 +29,7 @@ If you'd like this module to enforce the actual rules on your nodes, open up the
 ### Setup Requirements
 
 This module requires 2 additional modules
+
 1. puppetlabs-stdlib
 
 2. herculesteam-augeasproviders_pam
@@ -55,7 +56,7 @@ To see these custom facts, run "facter -p"
 
 ## Limitations
 
-This module was tested using Puppet 4.5 (PE 2016.2) as the Master (running on Ubuntu 14.04), tested on 
+This module was tested using Puppet 4.5 [PE 2016.2] (Note: it will not work on any Puppet version less than 4.0) as the Master (running on Ubuntu 14.04), tested on 
 
 1. RedHat 7 x64
 
