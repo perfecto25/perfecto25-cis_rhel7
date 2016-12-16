@@ -9,18 +9,18 @@ class cis_rhel7::rule::rule_9_2_2 {
 $passwd = $::cis_benchmarks['legacy_entry_passwd']
 $shadow = $::cis_benchmarks['legacy_entry_shadow']
 $group = $::cis_benchmarks['legacy_entry_group']
-  
-if $passwd != "" 
+
+if $passwd != ''
 {
     notify { "(9.2.2) - /etc/passwd contains a '+' entry": }
 }
 
-if $shadow != "" 
+if $shadow != ''
 {
     notify { "(9.2.3) - /etc/shadow contains a '+' entry": }
 }
 
-if $group != "" 
+if $group != ''
 {
     notify { "(9.2.4) - /etc/group contains a '+' entry": }
 }

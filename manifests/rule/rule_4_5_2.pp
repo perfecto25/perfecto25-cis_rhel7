@@ -7,20 +7,20 @@ class cis_rhel7::rule::rule_4_5_2 {
 $file = '/etc/hosts.allow'
 
 file_line { "(4.5.2) - ${file}: ADD: net/mask":
-  ensure    => present,
-  path      => $file,
-  line      => 'ALL: <net>/<mask',
-  match     => '^ALL.?:.?\d{2,}.\d{2,}.\d{1,}.\d{1,}\/\d{2,}.\d{2,}.\d{1,}.\d{1,}',
-  multiple  => true,
-  replace   => false,
-} 
+  ensure   => present,
+  path     => $file,
+  line     => 'ALL: <net>/<mask',
+  match    => '^ALL.?:.?\d{2,}.\d{2,}.\d{1,}.\d{1,}\/\d{2,}.\d{2,}.\d{1,}.\d{1,}',
+  multiple => true,
+  replace  => false,
+}
 
 file { "(4.5.3) - ${file} has 644 permissions":
-  ensure  => file,
-  path    => $file,
-  owner   => 'root',
-  group   => 'root',
-  mode    => '0644',
+  ensure => file,
+  path   => $file,
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0644',
 }
 
 

@@ -1,6 +1,6 @@
 class cis_rhel7::rule::rule_6_2_1 (
 
-	$settings = $::cis_rhel7::params::sshd_settings
+  $settings = $::cis_rhel7::params::sshd_settings
 
 ) inherits cis_rhel7::params {
 
@@ -25,38 +25,38 @@ $file = '/etc/ssh/sshd_config'
 each ($settings) |$item| {
 
   $setting = split($item,'%')
- 
+
   file_line { "(${setting[1]}) - ${file}: ${setting[0]}":
-    ensure    => present,
-    path      => $file,
-    line      => $setting[0],
+    ensure => present,
+    path   => $file,
+    line   => $setting[0],
   }
 }
 
 file { "(6.2.3) - ${file} permissions":
-  name    => $file,
-  ensure  => file,
-  mode    => '0600',
-  owner   => 'root',
-  group   => 'root',
+  name   => $file,
+  ensure => file,
+  mode   => '0600',
+  owner  => 'root',
+  group  => 'root',
 }
 
 file_line { "(6.2.13) - ${file}: AllowUsers":
-  ensure  	=> present,
-  path    	=> $file,
-  line 		=> 'AllowUsers <user>',
-  match 	=> '^AllowUsers.?$',
-  multiple  => false,
-  replace   => true,
+  ensure   => present,
+  path     => $file,
+  line     => 'AllowUsers <user>',
+  match    => '^AllowUsers.?$',
+  multiple => false,
+  replace  => true,
 }
 
 file_line { "(6.2.14) - ${file}: Banner":
-  ensure  	=> present,
-  path    	=> $file,
-  line 		=> 'Banner /etc/issue.net',
-  match 	=> '^Banner./etc/issue.?$',
-  multiple  => false,
-  replace   => true,
+  ensure   => present,
+  path     => $file,
+  line     => 'Banner /etc/issue.net',
+  match    => '^Banner./etc/issue.?$',
+  multiple => false,
+  replace  => true,
 }
 
 } #EOF

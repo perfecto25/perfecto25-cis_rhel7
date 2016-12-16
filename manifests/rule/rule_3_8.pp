@@ -9,9 +9,9 @@ class cis_rhel7::rule::rule_3_8 (
 
 each($services) |$serv| {
   service { "(3.8) - ${serv} disabled":
-    name    => $serv,
-    ensure  => stopped,
-    enable  => false,
+    name   => $serv,
+    ensure => stopped,
+    enable => false,
   }
 }
 

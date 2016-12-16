@@ -4,16 +4,16 @@ class cis_rhel7::rule::rule_1_2_3 {
 # 1.2.3 - Verify that gpgcheck is Globally Activated (Scored)
 
 file { '/etc/yum.conf':
-  ensure  => file,
-  owner   => 'root',
-  group   => 'root',
-  mode    => '0644',
+  ensure => file,
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0644',
 }
 
-file_line { "(1.2.3) /etc/yum.conf contains gpgcheck=1":
-  ensure  => present,
-  path    => '/etc/yum.conf',
-  line    => 'gpgcheck=1',
+file_line { '(1.2.3) /etc/yum.conf contains gpgcheck=1':
+  ensure => present,
+  path   => '/etc/yum.conf',
+  line   => 'gpgcheck=1',
 }
 
 

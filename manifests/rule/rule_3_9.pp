@@ -19,8 +19,8 @@ each($servers) |$package| {
 
   $pkg = split($package,',')
   package { "(${pkg[0]}) - Remove ${pkg[1]}":
-    name    => $pkg[1],
-    ensure  => absent,
+    name   => $pkg[1],
+    ensure => absent,
   }
 }
 

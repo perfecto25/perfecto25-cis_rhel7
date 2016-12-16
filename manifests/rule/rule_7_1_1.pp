@@ -8,36 +8,36 @@ class cis_rhel7::rule::rule_7_1_1 {
 $file = '/etc/login.defs'
 
 file { "(7.1.1) - ${file} exists":
-  ensure  => file,
-  path	  => $file,
-  owner   => 'root',
-  group   => 'root',
-  mode    => '0644',
+  ensure => file,
+  path   => $file,
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0644',
 }
 
-file_line { "(7.1.1) - Set password expiration date":
-  ensure    => present,
-  path      => $file,
-  line      => 'PASS_MAX_DAYS 90',
-  match     => '^PASS_MAX_DAYS.*90',
-  replace	=> false,
-} 
+file_line { '(7.1.1) - Set password expiration date':
+  ensure  => present,
+  path    => $file,
+  line    => 'PASS_MAX_DAYS 90',
+  match   => '^PASS_MAX_DAYS.*90',
+  replace => false,
+}
 
-file_line { "(7.1.2) - Set password change minimum number of days":
-  ensure    => present,
-  path      => $file,
-  line      => 'PASS_MIN_DAYS 7',
-  match     => '^PASS_MIN_DAYS.*7',
-  replace	=> false,
-} 
+file_line { '(7.1.2) - Set password change minimum number of days':
+  ensure  => present,
+  path    => $file,
+  line    => 'PASS_MIN_DAYS 7',
+  match   => '^PASS_MIN_DAYS.*7',
+  replace => false,
+}
 
-file_line { "(7.1.3) - Set password expiring warning days":
-  ensure    => present,
-  path      => $file,
-  line      => 'PASS_WARN_AGE 7',
-  match     => '^PASS_WARN_AGE.*7',
-  replace	=> false,
-} 
+file_line { '(7.1.3) - Set password expiring warning days':
+  ensure  => present,
+  path    => $file,
+  line    => 'PASS_WARN_AGE 7',
+  match   => '^PASS_WARN_AGE.*7',
+  replace => false,
+}
 
 
 

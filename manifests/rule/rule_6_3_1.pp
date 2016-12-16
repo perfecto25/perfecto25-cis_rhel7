@@ -5,8 +5,8 @@ class cis_rhel7::rule::rule_6_3_1 {
 
 $algo = $::cis_benchmarks['pw_hash']
 
-if ($algo == "") {
-    notify { "(6.3.1) - Password hashing algorithm is not set to SHA-512": }
+if ($algo == '') {
+    notify { '(6.3.1) - Password hashing algorithm is not set to SHA-512': }
 }
 
 

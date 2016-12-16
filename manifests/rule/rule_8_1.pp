@@ -10,48 +10,47 @@ class cis_rhel7::rule::rule_8_1  (
 
 
 each($banners) |$banner| {
-	file { "(8.1) - ${banner} exists":
-  		path    => $banner,
-  		ensure  => file,
-  		owner   => 'root',
-  		group   => 'root',
-  		mode    => '0644',
-  	}
+  file { "(8.1) - ${banner} exists":
+      ensure => file,
+      path   => $banner,
+      owner  => 'root',
+      group  => 'root',
+      mode   => '0644',
+    }
 
-  	file_line { "(8.2) - ${banner}: '\\m' removed":
-   		ensure  => absent,
-   		path    => $banner,
-   		line 	=> '\m',
-   		match 	=> '\\m',
-	  	replace	=> false,
-   	}
+    file_line { "(8.2) - ${banner}: '\\m' removed":
+      ensure  => absent,
+      path    => $banner,
+      line    => '\m',
+      match   => '\\m',
+      replace => false,
+    }
 
-	file_line { "(8.2) - ${banner}: '\\s' removed":
-   		ensure  => absent,
-   		path    => $banner,
-   		line 	=> '\s',
-   		match 	=> '\\s',
-	  	replace	=> false,
-   	} 
+    file_line { "(8.2) - ${banner}: '\\s' removed":
+      ensure  => absent,
+      path    => $banner,
+      line    => '\s',
+      match   => '\\s',
+      replace => false,
+    }
 
-   	file_line { "(8.2) - ${banner}: '\\v' removed":
-   		ensure  => absent,
-   		path    => $banner,
-   		line 	=> '\v',
-   		match 	=> '\\v',
-	  	replace	=> false,
-   	}
+    file_line { "(8.2) - ${banner}: '\\v' removed":
+      ensure  => absent,
+      path    => $banner,
+      line    => '\v',
+      match   => '\\v',
+      replace => false,
+    }
 
-   	file_line { "(8.2) - ${banner}: '\\r' removed":
-   		ensure  => absent,
-   		path    => $banner,
-   		line 	=> '\r',
-   		match 	=> '\\r',
-	  	replace	=> false,
-   	}  		
-	
-}
+    file_line { "(8.2) - ${banner}: '\\r' removed":
+      ensure  => absent,
+      path    => $banner,
+      line    => '\r',
+      match   => '\\r',
+      replace => false,
+    }
+
+  }
 
 
 } #EOF
-

@@ -1,17 +1,18 @@
 class cis_rhel7::params {
-  
-# Resource Defaults to NOOP 
+
+# Resource Defaults to NOOP
 File      { noop => true }
 File_line { noop => true }
 User      { noop => true }
 Exec      { noop => true, path => '/usr/bin:/usr/sbin:/bin' }
-Mount     { noop => true } 
+Mount     { noop => true }
 Service   { noop => true }
 Package   { noop => true }
 Cron      { noop => true }
 Augeas    { noop => true }
 Pam       { noop => true }
 
+# lint:ignore:2sp_soft_tabs lint:ignore:140chars The formatting makes the manifest easier to read
 $cis_scripts_dir = '/tmp/cis_scripts'
 
 $cis_scripts = [ 'cis_ww_files.sh',
@@ -156,7 +157,7 @@ $sshd_settings = [ 'Protocol 2 %6.2.1',
 
 $banners = [ '/etc/motd','/etc/issue','/etc/issue.net' ]
 
-
+# lint:endignore
 
 
 

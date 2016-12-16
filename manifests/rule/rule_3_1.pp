@@ -9,24 +9,24 @@ if $::operatingsystem == 'RedHat'
 {
 
   file { "(3.1) - ${file} exists":
-    path    => $file,
-    ensure  => file,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
+    path   => $file,
+    ensure => file,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
   }
 
   file_line { "(3.1) - ${file} umask 027":
-    ensure  => present,
-    path    => $file,
-    line    => 'umask 027',
-    match   => '^umask 027',
+    ensure => present,
+    path   => $file,
+    line   => 'umask 027',
+    match  => '^umask 027',
   }
 
-} 
-else 
+}
+else
 {
-  notify { "(3.1) - This operating system is not RedHat, skipping..": }
+  notify { '(3.1) - This operating system is not RedHat, skipping..': }
 }
 
 

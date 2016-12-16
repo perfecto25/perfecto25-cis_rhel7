@@ -28,45 +28,45 @@ file { $file :
 
 
 file_line { "(1.1.18) ${file} - cramfs":
-  ensure  => present,
-  path    => $file,
-  line    => 'install cramfs /bin/true',
+  ensure => present,
+  path   => $file,
+  line   => 'install cramfs /bin/true',
 }
 
 file_line { "(1.1.19) ${file} - freevxfs":
-  ensure  => present,
-  path    => $file,
-  line    => 'install freevxfs /bin/true',
+  ensure => present,
+  path   => $file,
+  line   => 'install freevxfs /bin/true',
 }
 
 file_line { "(1.1.20) ${file} - jffs2":
-  ensure  => present,
-  path    => $file,
-  line    => 'install jffs2 /bin/true',
+  ensure => present,
+  path   => $file,
+  line   => 'install jffs2 /bin/true',
 }
 
 file_line { "(1.1.21) ${file} - hfs":
-  ensure  => present,
-  path    => $file,
-  line    => 'install hfs /bin/true',
+  ensure => present,
+  path   => $file,
+  line   => 'install hfs /bin/true',
 }
 
 file_line { "(1.1.22) ${file} - hfsplus":
-  ensure  => present,
-  path    => $file,
-  line    => 'install hfsplus /bin/true',
+  ensure => present,
+  path   => $file,
+  line   => 'install hfsplus /bin/true',
 }
 
 file_line { "(1.1.23) ${file} - squashfs":
-  ensure  => present,
-  path    => $file,
-  line    => 'install squashfs /bin/true',
+  ensure => present,
+  path   => $file,
+  line   => 'install squashfs /bin/true',
 }
 
 file_line { "(1.1.24) ${file} - udf":
-  ensure  => present,
-  path    => $file,
-  line    => 'install udf /bin/true',
+  ensure => present,
+  path   => $file,
+  line   => 'install udf /bin/true',
 }
 
 

@@ -23,14 +23,14 @@ class cis_rhel7::rule::rule_5_2_4 (
 $file = '/etc/audit/audit.rules'
 
 each ($rules) |$rule_item| {
-  
+
   $rule = split($rule_item, '%')
 
   file_line { "(${rule[1]}) - ${file}: ${rule[0]}":
-    ensure    => present,
-    path      => $file,
-    line      => $rule[0],
-    multiple  => false,
+    ensure   => present,
+    path     => $file,
+    line     => $rule[0],
+    multiple => false,
   }
 }
 

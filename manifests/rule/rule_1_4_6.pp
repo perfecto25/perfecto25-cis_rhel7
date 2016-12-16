@@ -5,7 +5,7 @@ class cis_rhel7::rule::rule_1_4_6 {
 
 $ud = $::cis_benchmarks['unconfined_daemons']
 
-if $ud != ""
+if $ud != ''
 {
   notify { "(1.4.6) - Unconfined daemons present: ${ud}": }
 }

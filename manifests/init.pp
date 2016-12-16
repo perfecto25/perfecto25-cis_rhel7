@@ -3,9 +3,9 @@
 # CIS_Red_Hat_Enterprise_Linux_7_Benchmark_v1.0.0.pdf
 
 class cis_rhel7 inherits ::cis_rhel7::params {
-  
+
   ## Rules
-  
+
   include ::cis_rhel7::rule::prereq
   include ::cis_rhel7::rule::rule_1_1_1
   include ::cis_rhel7::rule::rule_1_1_5
