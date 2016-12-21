@@ -5,21 +5,21 @@ class cis_rhel7::rule::rule_1_2_2 {
 
 ## APPLIES TO REDHAT only
 
-if $::operatingsystem == 'RedHat' 
-{  
-  
+if $::operatingsystem == 'RedHat'
+{
+
   $gpgkey = $::cis_benchmarks['redhat_gpg']
-  
-  if $gpgkey == "RedHat GPG Key is not installed" 
+
+  if $gpgkey == 'RedHat GPG Key is not installed'
   {
-    notify { "(1.2.2) - RedHat GPG Key is not installed": }
+    notify { '(1.2.2) - RedHat GPG Key is not installed': }
   }
 }
 
-else 
+else
 
 {
-  notify { "(1.2.2) - This operating system is not RedHat, skipping rule..": }
+  notify { '(1.2.2) - This operating system is not RedHat, skipping rule..': }
 }
 
 

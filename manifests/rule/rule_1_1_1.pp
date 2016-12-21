@@ -21,6 +21,6 @@ class cis_rhel7::rule::rule_1_1_1 {
     fstype  => 'tmpfs',
     options => 'nodev,nosuid,noexec'
   }
-  
+
 
 } #EOF

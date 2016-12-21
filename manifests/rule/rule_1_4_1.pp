@@ -13,38 +13,38 @@ file { '/etc/grub.conf' :
 }
 
 
-file_line { "(1.4.1) /etc/grub.conf - selinux=0":
-  ensure  => absent,
-  path    => '/etc/grub.conf',
-  line    => 'selinux=0',
+file_line { '(1.4.1) /etc/grub.conf - selinux=0':
+  ensure => absent,
+  path   => '/etc/grub.conf',
+  line   => 'selinux=0',
 }
 
-file_line { "(1.4.1) /etc/grub.conf - enforcing=0":
-  ensure  => absent,
-  path    => '/etc/grub.conf',
-  line    => 'enforcing=0',
+file_line { '(1.4.1) /etc/grub.conf - enforcing=0':
+  ensure => absent,
+  path   => '/etc/grub.conf',
+  line   => 'enforcing=0',
 }
 
 
 $file = '/etc/selinux/config'
 
 file { $file :
-  ensure  => file,
-  mode    => '0644',
-  owner   => 'root',
-  group   => 'root',
+  ensure => file,
+  mode   => '0644',
+  owner  => 'root',
+  group  => 'root',
 }
 
-file_line { "(1.4.2) ${file} - SELINUX=enforcing": 
-  ensure  => present,
-  path    => $file,
-  line    => 'SELINUX=enforcing',
+file_line { "(1.4.2) ${file} - SELINUX=enforcing":
+  ensure => present,
+  path   => $file,
+  line   => 'SELINUX=enforcing',
 }
 
 file_line { "(1.4.3) ${file} - SELINUXTYPE=targeted":
-  ensure  => present,
-  path    => $file,
-  line    => 'SELINUXTYPE=targeted',
+  ensure => present,
+  path   => $file,
+  line   => 'SELINUXTYPE=targeted',
 }
 
 

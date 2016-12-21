@@ -1,7 +1,7 @@
 class cis_rhel7::rule::prereq (
 
   $cis_scripts_dir  = $::cis_rhel7::params::cis_scripts_dir,
-  $cis_scripts 		= $::cis_rhel7::params::cis_scripts
+  $cis_scripts     = $::cis_rhel7::params::cis_scripts
 
 ) inherits ::cis_rhel7::params {
 
@@ -10,13 +10,13 @@ class cis_rhel7::rule::prereq (
 
 
 # location for CIS shell scripts
-  
+
 file { $cis_scripts_dir :
-    ensure  => directory,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    noop    => false,
+    ensure => directory,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
+    noop   => false,
   }
 
 
@@ -24,13 +24,13 @@ file { $cis_scripts_dir :
 
 each($cis_scripts) |$item| {
 
-	file { "${cis_scripts_dir}/${item}":
-		ensure => file,
-  		source => "puppet:///modules/cis_rhel7/${item}",
-  		mode   => '0755',
-  		noop   => false,
-	}
-	}
+  file { "${cis_scripts_dir}/${item}":
+    ensure   => file,
+      source => "puppet:///modules/cis_rhel7/${item}",
+      mode   => '0755',
+      noop   => false,
+  }
+  }
 
 } #EOF
 

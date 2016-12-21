@@ -5,9 +5,9 @@ class cis_rhel7::rule::rule_1_2_6 {
 
 $pkg = $::cis_benchmarks['pkg_integrity']
 
-if $pkg != ""
+if $pkg != ''
 {
-  notify { "(1.2.6) - Installed packages did not pass integrity check": }
+  notify { '(1.2.6) - Installed packages did not pass integrity check': }
 }
 
 
